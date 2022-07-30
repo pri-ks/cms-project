@@ -1,0 +1,19 @@
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/head'); -%>
+    <%- include('layouts/nav'); -%>
+    <section class="container noti-wrap">
+        <% if(typeof(message) !='undefined'){ %>
+            <div class="msg-noti">
+                <h1><%= message %></h1>
+            </div>
+        <% } %>
+        <% if(typeof(err) !='undefined'){ %>
+        <div class="error-noti">
+            <h1><%= err %></h1>
+        </div>
+        <% } %>
+    </section>
+    <%- include('layouts/site-footer'); -%>
+</body>
+<%- include('layouts/footer') %>

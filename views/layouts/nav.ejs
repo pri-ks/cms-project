@@ -1,0 +1,17 @@
+<nav>
+    <ul>
+        <li <% if (typeof(page) !='undefined' && page === 'home') { %> class="active" <% } %> ><a href="/home">Home</a></li>
+        <li <% if (typeof(page) !='undefined' && page === 'posts') { %> class="active" <% } %> >
+            <a href="/postlist">Posts</a>
+            <% if (typeof(posts) !='undefined' && posts.length) { %>
+            <ul class="nav-sublist">
+                <% for(var post of posts) { %>
+                <li><a href="/view/<%= post.slug %>/<%= post._id %>"><%= post.title %></a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </li>
+        <li <% if (typeof(page) !='undefined' && page === 'add') { %>class="active" <% } %> ><a href="/add">Add Post</a></li>
+        <li><a href="/logout" >Logout</a></li>
+    </ul>
+</nav> 

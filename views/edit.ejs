@@ -1,0 +1,52 @@
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/head'); -%>
+    <%- include('layouts/nav'); -%>
+    <div class="container">
+      <h1>Update Post</h1>
+      <div class="post-form">
+        <form name="editForm" method="POST" action="" enctype="multipart/form-data">
+          <div class="form-control">
+            <label for="title" class="required">Title</label>
+            <input type="text" name="title" id="title" placeholder="Enter your title" value="<%= post.title%>" class="form-input"/>
+            <% if(typeof(errors) !='undefined' && errors.title){ %>
+              <span class="error-txt">
+                <%= errors.title.msg %>
+              </span>
+            <% } %>
+          </div>
+          <div class="form-control">
+            <label for="slug" class="required">Slug</label>
+            <input type="text" name="slug" id="slug" placeholder="Enter your post slug" value="<%= post.slug%>" class="form-input"/>
+            <% if(typeof(errors) !='undefined' && errors.slug){ %>
+              <span class="error-txt">
+                <%= errors.slug.msg %>
+              </span>
+            <% } %>
+          </div>
+          <div class="form-control">
+            <label for="image">Upload Image</label>
+            <input type="file" name="image" id="image" class="form-input"/>
+          </div>
+          <% if(post.imageName){ %>
+            <div class="form-control post-image">
+              <label>Uploaded Image</label>
+              <img src="/post-images/<%= post.imageName%>" alt="post image">
+            </div>
+          <% } %>
+          <div class="form-control">
+            <label for="content" class="required">Content</label>
+            <textarea id="post-content" name="content" placeholder="Write your content here" class="form-input"><%= post.content%></textarea>
+            <% if(typeof(errors) !='undefined' && errors.content){ %>
+              <span class="error-txt">
+                <%= errors.content.msg %>
+              </span>
+            <% } %>
+          </div>
+          <input type="submit" value="Update" class="form-btn" />
+        </form>
+      </div>
+    </div>
+    <%- include('layouts/site-footer'); -%>
+</body>
+<%- include('layouts/footer'); -%>

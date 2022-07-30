@@ -1,0 +1,62 @@
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/head'); -%>
+    <%- include('layouts/nav'); -%>
+    <div class="container posts-cont">
+        <h1>Published Posts</h1>
+        <table class="post-table">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Image</th>
+                    <th>Last Modified</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% if(posts.length) { 
+                var i=1;
+            %>
+            <% for(var post of posts) { %>
+            <tr>
+                <td><%= i++ %></td>
+                <td><%= post.title%></td>
+                <td><%= post.slug%></td>
+                <td>
+                    <% if(post.imageName){ %>
+                        <img src="/post-images/<%= post.imageName%>" alt="post image">
+                    <% } else { %>
+                        No image
+                    <% } %>
+                </td>
+                <td><%= post.lastModified%></td>
+                <td>
+                    <a href="/view/<%= post.slug %>/<%= post._id %>">
+                      View<img src="/images/eye.png" alt="Edit">
+                    </a>
+                </td>
+                <td>
+                    <a href="/edit/<%= post.slug %>/<%= post._id %>">
+                      Edit<img src="/images/edit.png" alt="Edit">
+                    </a>
+                </td>
+                <td>
+                    <a href="/delete/<%= post.slug %>/<%= post._id %>">
+                      Delete<img src="/images/trash.png" alt="Delete">
+                    </a>
+                </td>
+            </tr>
+            <% } %>  
+            <% } else { %>
+                <tr>
+                    <td colspan="6" class="no-post-txt">No posts published yet</td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('layouts/site-footer'); -%>
+</body>
+<%- include('layouts/footer') %>

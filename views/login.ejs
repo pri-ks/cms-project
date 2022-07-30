@@ -1,0 +1,24 @@
+<%- include('layouts/header'); -%>
+<body class="login-pg">
+  <div class="container">
+    <section class="login-wrap">
+      <img src="/images/bg-login.png" alt = "Login"/>
+      <form name="loginForm" method="Post" action="" class="login-form">
+        <h1>Sign In</h1>
+        <div class="form-control">
+          <label class="required">User Name</label>
+          <input id="username" type="text" name="username" class="form-input"/>
+        </div>
+        <div class="form-control">
+          <label class="required">Password</label>
+          <input id="password" type="password" name="password" class="form-input"/>
+        </div>
+        <input type="submit" value="Login" class="submit-btn">
+        <% if (typeof(error) !== 'undefined'){ %>
+          <div class="login-error"><%= error %></div>
+        <%  } %>
+      </form>  
+    </section>
+  </div>
+</body>
+<%- include('layouts/footer'); -%>

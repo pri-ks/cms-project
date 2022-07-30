@@ -1,0 +1,17 @@
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/head'); -%>
+    <%- include('layouts/nav'); -%>
+    <div class="container">
+      <div class="post-view-warp">
+          <h1 class="post-view-title"><%= post.title %></h1>
+          <p class="post-info"><%= post.lastModified %></p>
+          <% if(post.imageName){ %>
+            <div class="post-view-pic"><img src="/post-images/<%= post.imageName%>" alt="post image"></div>
+          <% } %>
+          <div><%- post.content %></div>
+      </div>
+    </div>
+    <%- include('layouts/site-footer'); -%>
+</body>
+<%- include('layouts/footer'); -%>
